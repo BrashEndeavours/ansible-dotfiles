@@ -1,0 +1,18 @@
+---
+downloads: /root/.ansible-downloads/
+
+username: "root"
+
+bash_aliases: []
+
+#Change to your own dotfiles repo
+configure_dotfiles: yes
+dotfiles_repo: https://github.com/BrashEndeavours/dotfiles
+dotfiles_repo_accept_hostkey: yes
+dotfiles_repo_local_destination: /root/Documents/dotfiles
+dotfiles_files:
+  - .bashrc
+  - .gitconfig
+  - .vimrc
+  - .config/cherrytree/config.cfg
+  - .tmux.conf

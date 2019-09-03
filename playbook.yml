@@ -1,0 +1,22 @@
+---
+- name: Converge
+  hosts: localhost
+  become: yes
+  gather_facts: yes
+
+  vars_files:
+    - default.config.yml
+    # Remove if not using secrets to store private keys.
+    - secrets/ssh_keys.yml      
+
+  pre_tasks:
+    - include_vars: "{{ item }}"
+      with_fileglob:
+        - "{{ playbook_dir }}/config.yml"
+      tags: ['always']
+
+  tasks:
+  - include_tasks: tasks/user.yml 
+  - include_tasks: tasks/dotfiles.yml
+  - include_tasks: tasks/ssh_keys.yml
+  - include_tasks: tasks/add_aliases.yml
